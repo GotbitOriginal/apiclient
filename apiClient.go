@@ -116,13 +116,14 @@ type APIClient interface {
 	 * arguments:
 	 *   asset     id валюты в строковом формате: <raw-line, uppercase> (BTC)
 	 *   address   blockchain address
+	 *   chain     blockchain network
 	 *   amount    кол-во
 	 *
 	 * returns:
 	 *   id    id запроса на вывод в строковом формате биржы
 	 *   err   ошибка
 	 */
-	Withdraw(asset string, address string, amount float64) (id string, err error)
+	Withdraw(asset, address, chain string, amount float64) (id string, err error)
 
 	// Функции ниже в том числе должны работать, если задать пустые настройки api
 
@@ -171,9 +172,9 @@ type APIClient interface {
 	 *   symbol   text-id пары в формате apiclient
 	 * 		(например "BTC_ETH" слева валюта в котрой цена, справа валюта в которой кол-во)
 	 *	 	в вид который принимает биржа, необходимо привести самому в этой функции
-	 *   candlePeriod  период свеч в минутах, типа int64
+	 *   candlePeriod  период свеч в минутах, типа int
 	 */
-	GetKLine(symbol string, candlePeriod int64) (KLine, error)
+	GetKLine(symbol string, candlePeriod int) (KLine, error)
 
 	/* Получает 100 последних сделок, заполняет структуру в формате apiclient
 	 * и сортирует ее по времени (от болле старого к более новому)

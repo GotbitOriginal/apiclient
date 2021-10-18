@@ -30,7 +30,7 @@ type ExchangeAPI struct {
 	DebugStr
 }
 
-//APIClient interface for all excahnge api
+//APIClient interface for all exchange api
 type APIClient interface {
 	/* Инициализирует поля реализации. В параметрах принимает приватные значения для
 	 * доступа к api. Если конкретная реализация не использует какой-то параметр, при
